@@ -57,7 +57,7 @@ namespace name_sorter
             FileHandler file = new FileHandler();
            
             List<Person> unorderedPersons = new List<Person>();
-            IEnumerable<Person> orderedPersons = new List<Person>();
+            List<Person> orderedPersons = new List<Person>();
 
             //Get names from file and process them
             unorderedPersons = ProcessNames(" ", file.ReadLinesFromFile(readPath));
@@ -81,6 +81,7 @@ namespace name_sorter
             file.WriteLinesToFile(writePath, NamesToArray(orderedPersons));
 
             Console.ReadKey();
+
         }
     }
 }

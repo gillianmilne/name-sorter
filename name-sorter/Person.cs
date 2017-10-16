@@ -6,8 +6,10 @@ namespace name_sorter
 {
     // Person class which contains a String FirstNames
     // and a string LastNames
-    class Person
+    public class Person
     {
+        public Person()
+        { }
         public String FirstNames
         { get; set; }
 
@@ -19,6 +21,24 @@ namespace name_sorter
         public String FirstLastNameString()
         {
             return FirstNames + " " + LastName;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            Person person = obj as Person;
+            if (person == null)
+            {
+                return false;
+            }
+            if (person.FirstNames == this.FirstNames && person.LastName == this.LastName)
+            {
+                return true;
+            }
+            return false;
+        }
+        public override int GetHashCode()
+        {
+            return this.FirstLastNameString().GetHashCode();
         }
     }
 }

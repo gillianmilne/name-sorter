@@ -19,16 +19,14 @@ namespace name_sorter
             {
                 Console.WriteLine("Read file " + path + " failed: ");
                 Console.WriteLine(e.Message);
-                System.Environment.Exit(1);
+                return null;
             }
-
-            return lines;
         }
 
         // Prints full names to a file
         // Prints full names to file "path", each on a new line in a 
         // "FirstNames LastNames" format
-        public void WriteLinesToFile(String path, String[] lines)
+        public bool WriteLinesToFile(String path, String[] lines)
         {
             try
             {
@@ -39,11 +37,13 @@ namespace name_sorter
                         writer.WriteLine(line);
                     }
                 }
+                return true;
             }
             catch (Exception e)
             {
                 Console.WriteLine("Write to file " + path + " failed: ");
                 Console.WriteLine(e.Message);
+                return false;
             }
         }
     }
