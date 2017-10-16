@@ -25,7 +25,7 @@ namespace name_sorter_tester
     public class NameSorterTests
     {
         [TestMethod]
-        public void SortLastThenFirst_()
+        public void SortLastThenFirst_Sorts_Person_List_by_LastName_Then_FirstName()
         {
             NameSorter namesorter = new NameSorter();
             List<Person> unsorted = new List<Person>();
