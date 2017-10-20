@@ -26,18 +26,20 @@ namespace name_sorter
         // Prints full names to a file
         // Prints full names to file "path", each on a new line in a 
         // "FirstNames LastNames" format
-        public bool WriteLinesToFile(String path, String[] lines)
+        public bool WriteLinesToFile(string path, string[] lines)
         {
             try
             {
-                using (StreamWriter writer = new StreamWriter(path))
-                {
-                    foreach (String line in lines)
-                    {
-                        writer.WriteLine(line);
-                    }
-                }
+                File.WriteAllLines(path, lines);
                 return true;
+                //using (TextWriter writer = new TextWriter(path))
+                //{
+                //    foreach (string line in lines)
+                //    {
+                //        writer.WriteLine(line);
+                //    }
+                //}
+                //return true;
             }
             catch (Exception e)
             {
