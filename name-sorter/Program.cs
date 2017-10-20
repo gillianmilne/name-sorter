@@ -51,18 +51,42 @@ namespace name_sorter
             //Filepaths
             String readPath = "unsorted-names-list.txt";
             String writePath = "sorted-names-list.txt";
-            
-            //Initialise
-            NameSorter sorter = new NameSorter();
+
+
+            INameSorter sorter;
             FileHandler file = new FileHandler();
-           
             List<Person> unorderedPersons = new List<Person>();
             List<Person> orderedPersons = new List<Person>();
+            //Initialise
+            if (args.Length == 0)
+            {
+                //print + default
+                sorter = new NameSorter();
+            }
+            else if (args.Length == 1)
+            {
+                if (args[0].Equals("asc"))
+                {
+                    sorter = new NameSorter();
+                } else if(args[0].Equals("desc"))
+                {
+                    sorter = new DescendingLastnameSorter();
+                }
+                else
+                {
+                    //instructions
+                    return;
+                }
+            } else
+            {
+                return;
+            }
+
 
             //Get names from file and process them
             unorderedPersons = ProcessNames(" ", file.ReadLinesFromFile(readPath));
             //Sort names
-            orderedPersons = sorter.SortLastThenFirst(unorderedPersons);
+            orderedPersons = sorter.SortNames(unorderedPersons).ToList();
 
             //Print to screen
             Console.WriteLine("Original list: ");

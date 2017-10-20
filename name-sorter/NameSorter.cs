@@ -3,15 +3,15 @@ using System.Linq;
 
 // Contains functions to process and sort names
 // Operates on lists of persons
-namespace name_sorter
+namespace name_sorter 
 {
     // Contains functions to process and sort names
-    public class NameSorter
+    public class NameSorter :INameSorter
     {
         // Sorts UnorderedPersons into OrderedPersons
         // Takes UnorderedPersons and sorts alphabetically based on LastNames
         // and then FirstNames and stores it in the Enumerable list OrderedPersons
-        public List<Person> SortLastThenFirst(List<Person> unorderedPersons)
+        public IEnumerable<Person> SortNames(IEnumerable<Person> unorderedPersons)
         {
             IEnumerable<Person> orderedPersons =
                 from person in unorderedPersons
